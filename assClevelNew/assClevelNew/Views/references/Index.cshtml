@@ -5,26 +5,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
+<div class="panel panel-default" style="background-color: hsla(240, 0%, 50%, 0.6)">
+	<div class="panel-heading">
+		<h3 class="panel-title">assignment documentation</h3>
+	</div>
+	<div class="panel-body">
+		<font color="white">filed provides assignment documentation</font>
+	</div>
+	<table class="table" style="color:white;">
+		<tr><td>author name:</td><td>weihan wang</td></tr>
+		<tr><td>student ID:</td><td>26424878</td></tr>
+		<tr><td>unit's name:</td><td>FIT5032</td></tr>
+		<tr><td>unit provider:</td><td>Monash University, The Caulfield School of Information Technology</td></tr>
+		<tr><td>Task number:</td><td>c level</td></tr>
+		<tr><td>tutor name:</td><td>weihan wang</td></tr>
+		<tr><td>author email:</td><td><a href="mailto: wwan220@student.monash.edu" style="color:white;">click to email Me</a></td></tr>
+		<tr><td>Task specification:</td><td><a href="http://moodle.vle.monash.edu/mod/page/view.php?id=4154651" style="color:white;">task specification</a></td></tr>
+	</table>
+</div>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.image)
-        </th>
+<table class="table" style="color:white;">
+    <tr >
+		<th>
+			@Html.DisplayNameFor(model => model.image)
+		</th >
         <th>
             @Html.DisplayNameFor(model => model.author)
         </th>
         <th></th>
     </tr>
-
 @foreach (var item in Model) {
-    <tr>
+    <tr >
         <td>
-            @Html.DisplayFor(modelItem => item.image)
+       <img src=" @Html.DisplayFor(modelItem => item.image)" height="50" width="50"/>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.author)

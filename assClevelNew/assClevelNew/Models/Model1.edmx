@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="article">
+          <Key>
+            <PropertyRef Name="articleid" />
+          </Key>
+          <Property Name="articleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aname" Type="nvarchar" MaxLength="50" />
+          <Property Name="atime" Type="date" />
+          <Property Name="atype" Type="nvarchar" MaxLength="50" />
+          <Property Name="acontents" Type="nvarchar" MaxLength="500" />
+          <Property Name="apublisher" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="journalist">
+          <Key>
+            <PropertyRef Name="journalistid" />
+          </Key>
+          <Property Name="journalistid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="jname" Type="nvarchar" MaxLength="50" />
+          <Property Name="jphone" Type="int" />
+          <Property Name="jemail" Type="nvarchar" MaxLength="50" />
+          <Property Name="jtitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="articleid" Type="int" />
+        </EntityType>
+        <Association Name="FK_journalist_article">
+          <End Role="article" Type="Self.article" Multiplicity="0..1" />
+          <End Role="journalist" Type="Self.journalist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="article">
+              <PropertyRef Name="articleid" />
+            </Principal>
+            <Dependent Role="journalist">
+              <PropertyRef Name="articleid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="article" EntityType="Self.article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="journalist" EntityType="Self.journalist" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_journalist_article" Association="Self.FK_journalist_article">
+            <End Role="article" EntitySet="article" />
+            <End Role="journalist" EntitySet="journalist" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="article">
+          <Key>
+            <PropertyRef Name="articleid" />
+          </Key>
+          <Property Name="articleid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="atime" Type="DateTime" Precision="0" />
+          <Property Name="atype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="acontents" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="apublisher" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="journalist" Relationship="Self.FK_journalist_article" FromRole="article" ToRole="journalist" />
+        </EntityType>
+        <EntityType Name="journalist">
+          <Key>
+            <PropertyRef Name="journalistid" />
+          </Key>
+          <Property Name="journalistid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="jname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="jphone" Type="Int32" />
+          <Property Name="jemail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="jtitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="articleid" Type="Int32" />
+          <NavigationProperty Name="article" Relationship="Self.FK_journalist_article" FromRole="journalist" ToRole="article" />
+        </EntityType>
+        <Association Name="FK_journalist_article">
+          <End Role="article" Type="Self.article" Multiplicity="0..1" />
+          <End Role="journalist" Type="Self.journalist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="article">
+              <PropertyRef Name="articleid" />
+            </Principal>
+            <Dependent Role="journalist">
+              <PropertyRef Name="articleid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="article" EntityType="Self.article" />
+          <EntitySet Name="journalist" EntityType="Self.journalist" />
+          <AssociationSet Name="FK_journalist_article" Association="Self.FK_journalist_article">
+            <End Role="article" EntitySet="article" />
+            <End Role="journalist" EntitySet="journalist" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+          <EntitySetMapping Name="article">
+            <EntityTypeMapping TypeName="Database1Model.article">
+              <MappingFragment StoreEntitySet="article">
+                <ScalarProperty Name="articleid" ColumnName="articleid" />
+                <ScalarProperty Name="aname" ColumnName="aname" />
+                <ScalarProperty Name="atime" ColumnName="atime" />
+                <ScalarProperty Name="atype" ColumnName="atype" />
+                <ScalarProperty Name="acontents" ColumnName="acontents" />
+                <ScalarProperty Name="apublisher" ColumnName="apublisher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="journalist">
+            <EntityTypeMapping TypeName="Database1Model.journalist">
+              <MappingFragment StoreEntitySet="journalist">
+                <ScalarProperty Name="journalistid" ColumnName="journalistid" />
+                <ScalarProperty Name="jname" ColumnName="jname" />
+                <ScalarProperty Name="jphone" ColumnName="jphone" />
+                <ScalarProperty Name="jemail" ColumnName="jemail" />
+                <ScalarProperty Name="jtitle" ColumnName="jtitle" />
+                <ScalarProperty Name="articleid" ColumnName="articleid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

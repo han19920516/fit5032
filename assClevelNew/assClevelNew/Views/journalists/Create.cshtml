@@ -1,0 +1,72 @@
+﻿@model assClevelNew.Models.journalist
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h class="control-label" style="font-weight: bolder; font-size: 1.8em;color:white;">create a journalist</h>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">       
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <h class="control-label col-md-2" style="font-weight: bolder; font-size: 1.3em;color:white;">journalist name</h>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.jname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.jname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h class="control-label col-md-2" style="font-weight: bolder; font-size: 1.3em;color:white;">phone number</h>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.jphone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.jphone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h class="control-label col-md-2" style="font-weight: bolder; font-size: 1.3em;color:white;">email</h>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.jemail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.jemail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h class="control-label col-md-2" style="font-weight: bolder; font-size: 1.3em;color:white;">title</h>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.jtitle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.jtitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h class="control-label col-md-2" style="font-weight: bolder; font-size: 1.3em;color:white;">choose new name</h>
+            <div class="col-md-10">
+                @Html.DropDownList("articleid", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.articleid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+   <button class="btn"> @Html.ActionLink("Back to List", "Index")</button>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

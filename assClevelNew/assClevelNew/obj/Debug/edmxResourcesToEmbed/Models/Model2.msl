@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database2ModelStoreContainer" CdmEntityContainer="Database2Entities">
+    <EntitySetMapping Name="reference">
+      <EntityTypeMapping TypeName="Database2Model.reference">
+        <MappingFragment StoreEntitySet="reference">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="author" ColumnName="author" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

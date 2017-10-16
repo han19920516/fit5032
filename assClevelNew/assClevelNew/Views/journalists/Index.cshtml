@@ -1,0 +1,73 @@
+﻿@model IEnumerable<assClevelNew.Models.journalist>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#data1').DataTable({ order: [1, 'asc'] });
+    });
+</script>
+
+<body>
+    <h1 class="text-center" style="font-weight: bolder; font-size: 1.8em;color:white;">journalist management</h1>
+
+
+    <p>
+        <button class="btn" type="button"> @Html.ActionLink("Create New", "Create")</button>
+    </p>
+    <div style="background-color: hsla(240, 0%, 50%, 0.6)">
+        <p class="text-right" style="color:white"> enter any key words to search</p>
+        <table class="table table-hover table-striped" id="data1">
+            <thead>
+                <tr>
+                    <th>
+                        name
+                    </th>
+                    <th>
+                        phone
+                    </th>
+                    <th>
+                        email
+                    </th>
+                    <th>
+                        title
+                    </th>
+                    <th>
+                        written news name
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.jname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.jphone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.jemail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.jtitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.article.aname)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { id = item.journalistid }) |
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+
+

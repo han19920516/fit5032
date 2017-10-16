@@ -1,0 +1,75 @@
+﻿@using assClevelNew.Models
+@model assClevelNew.Models.article
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="font-weight: bolder; font-size: 1.5em;color:white;">edit news</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.articleid)
+
+        <div class="form-group">
+            <h class="control-label col-md-2" style="font-weight: bolder; font-size: 1.3em;color:white;">news name</h>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.aname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.aname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h class="control-label col-md-2" style="font-weight: bolder; font-size: 1.3em;color:white;">news date</h>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.atime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.atime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h class="control-label col-md-2" style="font-weight: bolder; font-size: 1.3em;color:white;">news type</h>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.atype, new SelectList(Enum.GetValues(typeof(Gender))), new { htmlAttributes = new { @class = "form-control " } })
+                @Html.ValidationMessageFor(model => model.atype, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h class="control-label col-md-2" style="font-weight: bolder; font-size: 1.3em;color:white;">news contents</h>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.acontents, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.acontents, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h class="control-label col-md-2" style="font-weight: bolder; font-size: 1.3em;color:white;">news link</h>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.apublisher, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.apublisher, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <button class="btn"> @Html.ActionLink("Back to List", "Index")</button>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

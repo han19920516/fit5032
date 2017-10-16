@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="article">
+    <Key>
+      <PropertyRef Name="articleid" />
+    </Key>
+    <Property Name="articleid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="aname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="atime" Type="DateTime" Precision="0" />
+    <Property Name="atype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="acontents" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="apublisher" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="journalist" Relationship="Self.FK_journalist_article" FromRole="article" ToRole="journalist" />
+  </EntityType>
+  <EntityType Name="journalist">
+    <Key>
+      <PropertyRef Name="journalistid" />
+    </Key>
+    <Property Name="journalistid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="jname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="jphone" Type="Int32" />
+    <Property Name="jemail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="jtitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="articleid" Type="Int32" />
+    <NavigationProperty Name="article" Relationship="Self.FK_journalist_article" FromRole="journalist" ToRole="article" />
+  </EntityType>
+  <Association Name="FK_journalist_article">
+    <End Role="article" Type="Self.article" Multiplicity="0..1" />
+    <End Role="journalist" Type="Self.journalist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="article">
+        <PropertyRef Name="articleid" />
+      </Principal>
+      <Dependent Role="journalist">
+        <PropertyRef Name="articleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="article" EntityType="Self.article" />
+    <EntitySet Name="journalist" EntityType="Self.journalist" />
+    <AssociationSet Name="FK_journalist_article" Association="Self.FK_journalist_article">
+      <End Role="article" EntitySet="article" />
+      <End Role="journalist" EntitySet="journalist" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

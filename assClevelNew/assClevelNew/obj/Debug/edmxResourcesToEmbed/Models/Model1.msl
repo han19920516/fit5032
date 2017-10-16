@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+    <EntitySetMapping Name="article">
+      <EntityTypeMapping TypeName="Database1Model.article">
+        <MappingFragment StoreEntitySet="article">
+          <ScalarProperty Name="articleid" ColumnName="articleid" />
+          <ScalarProperty Name="aname" ColumnName="aname" />
+          <ScalarProperty Name="atime" ColumnName="atime" />
+          <ScalarProperty Name="atype" ColumnName="atype" />
+          <ScalarProperty Name="acontents" ColumnName="acontents" />
+          <ScalarProperty Name="apublisher" ColumnName="apublisher" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="journalist">
+      <EntityTypeMapping TypeName="Database1Model.journalist">
+        <MappingFragment StoreEntitySet="journalist">
+          <ScalarProperty Name="journalistid" ColumnName="journalistid" />
+          <ScalarProperty Name="jname" ColumnName="jname" />
+          <ScalarProperty Name="jphone" ColumnName="jphone" />
+          <ScalarProperty Name="jemail" ColumnName="jemail" />
+          <ScalarProperty Name="jtitle" ColumnName="jtitle" />
+          <ScalarProperty Name="articleid" ColumnName="articleid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

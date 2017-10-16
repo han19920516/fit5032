@@ -1,0 +1,59 @@
+﻿@model assClevelNew.Models.journalist
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>journalist</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.jname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jphone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jphone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jemail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jemail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jtitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jtitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.article.aname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.article.aname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.journalistid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

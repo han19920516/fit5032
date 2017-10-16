@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "adm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+    <h1 class="text-center" style="font-weight: bolder; font-size: 1.8em;color:white;">admstration</h1>
+    <div >
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="col-md-12 text-center">
+                    <button class="btn" type="button"style="WIDTH: 197px; HEIGHT: 40px">@Html.ActionLink("article", "index", "articles")</button>
+                </div> 
+                <br />
+                <div class="col-md-12 text-center">
+                    <button class="btn" type="button"style="WIDTH: 197px; HEIGHT: 40px">@Html.ActionLink("journalist", "index", "journalists")</button>
+                </div>
+           </div>
+        </div>
+    </div>
+</body>
+

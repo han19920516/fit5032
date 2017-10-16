@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <script src="~/Scripts/jquery.dataTables.js"></script>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="container">
+        <!-- Topper w/ logo -->
+        <div class="row hidden-xs topper">
+           <!-- <div class="col-xs-7 col-sm-7">
+                <a href="//convertify.io"><img am-TopLogo alt="SECUREVIEW" src="~/Content/image/Capture.PNG" width="50" class="img-responsive" height="20"></a>
+            </div>     -->     
+        </div> <!-- End Topper -->
+        <!-- Navigation -->
+        <div class="row">
+            <nav class="navbar navbar-inverse " role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand visible-xs-inline-block nav-logo" href="/"></a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav js-nav-add-active-class">
+                            <li>@Html.ActionLink("RX7-news", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>                                                       
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("news", "Index2", "articles")</li>
+                            <li>@Html.ActionLink("admstration", "adm", "home")</li>  
+							<li>@Html.ActionLink("images", "index", "references")</li> 
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right hidden-xs">
+                            @Html.Partial("_LoginPartial")
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div>
+            </nav>
+        </div>
+    </div>
+   
+    <!--     <div class="navbar navbar-inverse navbar-fixed-top"> 
+        <div class="container-fluid">
+            <a class="navbar-brand" rel="home" href="#" title="hello,world">
+                <img style="width:50px; margin-top: -13px;-moz-transform: translate(25px, 0px); -webkit-transform: translate(25px, 0px);" src="~/Content/image/2.jpg">
+            </a>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("News New Era", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+      
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("article", "index", "articles")</li>
+                    <li>@Html.ActionLink("journalist", "index", "journalists")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+        -->
+   
+    
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My website Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
